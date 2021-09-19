@@ -54,7 +54,7 @@ void Lexer::Run(std::string& input) {
     while(input.size() > 0) {
         maxRead = 0;
         maxAuto = automata[0];
-        for (int i = 0; i < automata.size(); i++) {
+        for (size_t i = 0; i < automata.size(); i++) {
             int inputRead = automata[i]->Start(input);
             if (inputRead > maxRead) {
                 maxRead = inputRead;
@@ -79,7 +79,7 @@ void Lexer::Run(std::string& input) {
     //for loop for vector of tokens
     Token *eofToken = new Token(TokenType::END, "", lineNum);
     tokens.push_back(eofToken);
-    for (int i = 0; i < tokens.size(); i++) {
+    for (size_t i = 0; i < tokens.size(); i++) {
         cout << tokens[i]->toString();
     }
     cout << "Total tokens = " << tokens.size();

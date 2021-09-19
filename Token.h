@@ -73,6 +73,7 @@ public:
             case TokenType::COMMENT:    tType = "COMMENT";     break;
             case TokenType::UNDEFINED:  tType = "UNDEFINED";   break;
             case TokenType::END:        tType = "EOF";         break;
+            case TokenType::WHITE:      tType = "";            break;
         }
         os << "(" << tType << ",\"" << desc << "\"," << lineNumber << ")" << endl;
         return os.str();
