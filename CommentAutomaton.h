@@ -1,23 +1,52 @@
 #ifndef P1_COMMENTAUTOMATON_H
 #define P1_COMMENTAUTOMATON_H
 #include "Automaton.h"
+#include <string>
 
 class CommentAutomaton : public Automaton
 {
 private:
     void S1(const std::string& input) {
-        while(input[index] != '\r' && input[index] != EOF){
+        while(true) {
+            if (input[index] == '\n')
+                break;
             inputRead++;
             index++;
-        }inputRead+=2;
-        newLines++;
-        index+=2;
+        }
+        /*while(input[index] != '\n' && input[index] != EOF){
+            inputRead++;
+            index++;
+        } //input.erase(inputRead-1,1);
+        //inputRead++;
+        //newLines++;*/
     }
-    void S2(const std::string& input) {
-        while(input[index] != '|' && input[index+1] != '#'){
+    void S2(const std::string& input){
+        while(true){
+            if (input[index] == '|'){
+                inputRead++;
+                index++;
+                S3(input);
+                break;
+            }
+            if (index == input.size()){
+                type = TokenType::UNDEFINED;
+                newLines++;
+                break;
+            }
+            if (input[index] == '\n')
+                newLines++;
             inputRead++;
             index++;
-        } inputRead+=2;
+        }
+    }
+    void S3(const std::string& input){
+        if (input[index] == '#'){
+            inputRead++;
+        } else {
+            inputRead++;
+            index++;
+            S2(input);
+        }
     }
 
 public:

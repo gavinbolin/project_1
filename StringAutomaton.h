@@ -6,12 +6,29 @@ class StringAutomaton : public Automaton
 {
 private:
     void S1(const std::string& input) {
-        while(input[index] != '\''){
+        while(true){
+            if (input[index] == '\''){
+                inputRead++;
+                index++;
+                S2(input);
+                break;
+            }
+            if (index == input.size()){
+                type = TokenType::UNDEFINED;
+                break;
+            }
             if (input[index] == '\n')
                 newLines++;
             inputRead++;
             index++;
-        } inputRead++;
+        }
+    }
+    void S2(const std::string &input){
+        if (input[index] == '\''){
+            inputRead++;
+            index++;
+            S1(input);
+        }
     }
 
 public:

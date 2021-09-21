@@ -67,6 +67,7 @@ void Lexer::Run(std::string& input) {
             if (newToken->notWhite()){
                 tokens.push_back(newToken);
             } else {
+                //input.erase(maxRead,1);
                 delete newToken;
             }
         } else {

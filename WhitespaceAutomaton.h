@@ -8,7 +8,7 @@ public:
     WhitespaceAutomaton() : Automaton(TokenType::WHITE) {}
 
     void S0(const std::string& input) {
-        if (input[index] == ' ' || input[index] == '\r') {
+        if (input[index] == ' ') {
             inputRead = 1;
         }
         else if (input[index] == '\n') {
