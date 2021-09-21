@@ -75,7 +75,7 @@ public:
             case TokenType::END:        tType = "EOF";         break;
             case TokenType::WHITE:      tType = "";            break;
         }
-        os << "(" << tType << ",\"" << desc << "\"," << lineNumber << ")" << endl;
+        os << "(" << tType << ",\"" << desc << "\"," << lineNumber << ")";
         return os.str();
     }
     // TODO: add other needed methods

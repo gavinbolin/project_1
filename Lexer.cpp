@@ -81,9 +81,9 @@ void Lexer::Run(std::string& input) {
     Token *eofToken = new Token(TokenType::END, "", lineNum);
     tokens.push_back(eofToken);
     for (size_t i = 0; i < tokens.size(); i++) {
-        cout << tokens[i]->toString();
+        cout << tokens[i]->toString() << endl;
     }
-    cout << "Total Tokens = " << tokens.size() << endl;
+    cout << "Total Tokens = " << tokens.size();
 }
 
 //loop while input.size() > 0 {
